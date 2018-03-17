@@ -78,6 +78,13 @@ function getHist(){
         type: 'GET',
         url: '/calc'
     }).done(function(response){
-        console.log(response);
+        appendHist(response);
     })
+}
+
+function appendHist(response){
+    $('#history').empty();
+    for (i of response){
+        $('#history').append('<li>' + i + '</li>');
+    }
 }
