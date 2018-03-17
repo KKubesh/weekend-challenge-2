@@ -21,19 +21,27 @@ app.post('/calc', (req,res) => {
     switch(operator){
         case 'Add':
         let addTotal = parseInt(x) + parseInt(y)
+        let mathAddHist = x + ' + ' + y + ' = ' + addTotal;
         console.log(addTotal);
+        console.log(mathAddHist);
         break;
         case 'Subtract':
         let subTotal = parseInt(x) - parseInt(y) // parseInt not needed...
+        let mathSubHist = x + ' - ' + y + ' = ' + subTotal;
         console.log(subTotal);
+        console.log(mathSubHist);
         break;
         case 'Multiply':
         let multTotal = parseInt(x) * parseInt(y) // parseInt not needed...
+        let mathMultHist = x + ' * ' + y + ' = ' + multTotal;
         console.log(multTotal);
+        console.log(mathMultHist);
         break;
         case 'Divide':
-        let divTotal = parseInt(x) + parseInt(y) // parseInt not needed...
+        let divTotal = parseInt(x) / parseInt(y) // parseInt not needed...
+        let mathDivHist = x + ' / ' + y + ' = ' + divTotal;
         console.log(divTotal);
+        console.log(mathDivHist);
         break;
     }
     res.sendStatus(200);
