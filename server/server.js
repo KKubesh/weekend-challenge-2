@@ -56,3 +56,10 @@ app.post('/calc', (req,res) => {
 app.get('/calc', (req,res) => {
     res.send(histData);
 })
+
+app.post('/clear', (req,res) => {
+    histData.length = 0;
+    console.log(histData);
+    console.log('data cleared');
+    res.sendStatus(200);
+})

@@ -11,6 +11,7 @@ function clickHandler() {
     $('#sub').on('click', subSubtract);
     $('#mult').on('click', subMultiply);
     $('#div').on('click', subDivide);
+    $('#clearHist').on('click', clearHist)
 }
 
 function subAdd (){
@@ -87,4 +88,13 @@ function appendHist(response){
     for (i of response){
         $('#history').append('<li>' + i + '</li>');
     }
+}
+
+function clearHist(){
+    $.ajax({
+        type: 'POST',
+        url: '/clear'
+    }).done(function(response){
+        getHist()
+    })
 }
