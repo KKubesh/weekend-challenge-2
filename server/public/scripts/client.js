@@ -3,6 +3,7 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('READY NOW!!!');
     clickHandler();
+    getHist();
 }
 
 function clickHandler() {
@@ -21,6 +22,9 @@ function subAdd (){
         type: 'post',
         data: valsAdd,
         url: '/calc'
+    }).done(function(response){
+        console.log('Success!');
+        getHist();
     })
 }
 
@@ -33,6 +37,9 @@ function subSubtract (){
         type: 'post',
         data: valsAdd,
         url: '/calc'
+    }).done(function(response){
+        console.log('Success!');
+        getHist();
     })
 }
 
@@ -45,6 +52,9 @@ function subMultiply (){
         type: 'post',
         data: valsAdd,
         url: '/calc'
+    }).done(function(response){
+        console.log('Success!');
+        getHist();
     })
 }
 
@@ -54,11 +64,20 @@ function subDivide (){
     let valsAdd = {xValue: x, yValue: y, math: "Divide"};
     console.log(valsAdd);
     $.ajax({
-        type: 'post',
+        type: 'POST',
         data: valsAdd,
         url: '/calc'
     }).done(function(response){
         console.log('Success!');
-        
+        getHist();
+    })
+}
+
+function getHist(){
+    $.ajax({
+        type: 'GET',
+        url: '/calc'
+    }).done(function(response){
+        console.log(response);
     })
 }

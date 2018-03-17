@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 const PORT = process.env.PORT || 4001;
 let bodyParser = require('body-parser');
+let histData = [];
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -24,25 +25,34 @@ app.post('/calc', (req,res) => {
         let mathAddHist = x + ' + ' + y + ' = ' + addTotal;
         console.log(addTotal);
         console.log(mathAddHist);
+        histData.push(mathAddHist);
         break;
         case 'Subtract':
         let subTotal = parseInt(x) - parseInt(y) // parseInt not needed...
         let mathSubHist = x + ' - ' + y + ' = ' + subTotal;
         console.log(subTotal);
         console.log(mathSubHist);
+        histData.push(mathSubHist);
         break;
         case 'Multiply':
         let multTotal = parseInt(x) * parseInt(y) // parseInt not needed...
         let mathMultHist = x + ' * ' + y + ' = ' + multTotal;
         console.log(multTotal);
         console.log(mathMultHist);
+        histData.push(mathMultHist);
         break;
         case 'Divide':
         let divTotal = parseInt(x) / parseInt(y) // parseInt not needed...
         let mathDivHist = x + ' / ' + y + ' = ' + divTotal;
         console.log(divTotal);
         console.log(mathDivHist);
+        histData.push(mathDivHist);
         break;
     }
+    console.log(histData);
     res.sendStatus(200);
+})
+
+app.get('/calc', (req,res) => {
+    res.send(histData);
 })
