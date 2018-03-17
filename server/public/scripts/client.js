@@ -11,7 +11,8 @@ function clickHandler() {
     $('#sub').on('click', subSubtract);
     $('#mult').on('click', subMultiply);
     $('#div').on('click', subDivide);
-    $('#clearHist').on('click', clearHist)
+    $('.value').on('click', inputVal);
+    $('#clearHist').on('click', clearHist);
 }
 
 function subAdd (){
@@ -97,4 +98,14 @@ function clearHist(){
     }).done(function(response){
         getHist()
     })
+}
+
+function inputVal () {
+    let a = $(this).text();
+    visual(a);
+    
+}
+
+function visual (a) {
+    $('#currentCalc').append(a);
 }

@@ -6,16 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/jquery-3.3.1.min.js"></script>
     <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
     <title>Weekend Challenge #2</title>
 </head>
 <body>
     <h1>Weekend Challenge #2</h1>
-    <input type="number" placeholder="x" id="xVal">
-    <input type="number" placeholder="y" id="yVal">    
-    <button id="add">Add x + y</button>
-    <button id="sub">Subtract x - y</button>
-    <button id="mult">Multiply x * y</button>
-    <button id="div">Divide x / y</button>
+    <div id="currentCalc"></div>
+    <button class="sq value">1</button>  
+    <button class="sq value">2</button>  
+    <button class="sq value">3</button>
+    <button class="sq operator" id="add">+</button>
+    </br>
+    <button class="sq value">4</button>  
+    <button class="sq value">5</button>  
+    <button class="sq value">6</button>  
+    <button class="sq operator" id="sub">-</button>
+    </br>
+    <button class="sq value">7</button>  
+    <button class="sq value">8</button>  
+    <button class="sq value">9</button>  
+    <button class="sq operator" id="div">/</button>
+    </br>
+    <button class="sq value">0</button>  
+    <button class="sq" id="deci">.</button>
+    <button class="sq equal" id="equal">=</button>      
+    <button class="sq operator" id="mult">*</button>
     </br>
     <h1>Calculation History</h1>
     <ul id=history></ul>

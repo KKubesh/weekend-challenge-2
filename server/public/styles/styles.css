@@ -1,0 +1,12 @@
+.sq {
+    height: 40px;
+    width: 40px;
+}
+
+.equal {
+    background-color: #57b4d6;
+}
+
+.operator {
+    background-color: lightblue;
+}
