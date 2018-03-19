@@ -10,3 +10,8 @@
 .operator {
     background-color: lightblue;
 }
+
+.currentCalc {
+    width: 130px;
+    height: 40px;
+}

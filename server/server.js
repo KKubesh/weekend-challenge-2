@@ -20,28 +20,28 @@ app.post('/calc', (req,res) => {
     let y = valsCalc.yValue;
     console.log(operator, x, y);
     switch(operator){
-        case 'Add':
+        case ' + ':
         let addTotal = parseInt(x) + parseInt(y)
         let mathAddHist = x + ' + ' + y + ' = ' + addTotal;
         console.log(addTotal);
         console.log(mathAddHist);
         histData.push(mathAddHist);
         break;
-        case 'Subtract':
+        case ' - ':
         let subTotal = parseInt(x) - parseInt(y) // parseInt not needed...
         let mathSubHist = x + ' - ' + y + ' = ' + subTotal;
         console.log(subTotal);
         console.log(mathSubHist);
         histData.push(mathSubHist);
         break;
-        case 'Multiply':
+        case ' * ':
         let multTotal = parseInt(x) * parseInt(y) // parseInt not needed...
         let mathMultHist = x + ' * ' + y + ' = ' + multTotal;
         console.log(multTotal);
         console.log(mathMultHist);
         histData.push(mathMultHist);
         break;
-        case 'Divide':
+        case ' / ':
         let divTotal = parseInt(x) / parseInt(y) // parseInt not needed...
         let mathDivHist = x + ' / ' + y + ' = ' + divTotal;
         console.log(divTotal);

@@ -11,23 +11,35 @@ function clickHandler() {
     $('#sub').on('click', subSubtract);
     $('#mult').on('click', subMultiply);
     $('#div').on('click', subDivide);
+    $('#equal').on('click', equalEntry);
     $('.value').on('click', inputVal);
     $('#clearHist').on('click', clearHist);
+    $('#clearBtn').on('click', emptyCalc);
+}
+
+function emptyCalc (){
+    $('#xVal').empty();
+    $('#yVal').empty();
+    $('#operator').empty();
+}
+
+function equalEntry () {
+    sendData();
+    $('#xVal').empty();
+    $('#yVal').empty();
+    $('#operator').empty();
+    // $.ajax({
+    //     type: 'GET',
+    //     url: '/calc'
+    // }).done(function(response){
+    //     appendHist(response);
+    // })
 }
 
 function subAdd (){
-    let x = $('#xVal').val();
-    let y = $('#yVal').val();
-    let valsAdd = {xValue: x, yValue: y, math: "Add"};
-    console.log(valsAdd);
-    $.ajax({
-        type: 'post',
-        data: valsAdd,
-        url: '/calc'
-    }).done(function(response){
-        console.log('Success!');
-        getHist();
-    })
+    if ($('#operator').text() == ''){
+    $('#operator').append(' ' + $(this).text() + ' ');
+    }
 }
 
 function subSubtract (){
@@ -35,14 +47,9 @@ function subSubtract (){
     let y = $('#yVal').val();
     let valsAdd = {xValue: x, yValue: y, math: "Subtract"};
     console.log(valsAdd);
-    $.ajax({
-        type: 'post',
-        data: valsAdd,
-        url: '/calc'
-    }).done(function(response){
-        console.log('Success!');
-        getHist();
-    })
+    if ($('#operator').text() == ''){
+    $('#operator').append(' ' + $(this).text() + ' ');
+    }
 }
 
 function subMultiply (){
@@ -50,14 +57,9 @@ function subMultiply (){
     let y = $('#yVal').val();
     let valsAdd = {xValue: x, yValue: y, math: "Multiply"};
     console.log(valsAdd);
-    $.ajax({
-        type: 'post',
-        data: valsAdd,
-        url: '/calc'
-    }).done(function(response){
-        console.log('Success!');
-        getHist();
-    })
+    if ($('#operator').text() == ''){
+        $('#operator').append(' ' + $(this).text() + ' ');
+    }
 }
 
 function subDivide (){
@@ -65,14 +67,9 @@ function subDivide (){
     let y = $('#yVal').val();
     let valsAdd = {xValue: x, yValue: y, math: "Divide"};
     console.log(valsAdd);
-    $.ajax({
-        type: 'POST',
-        data: valsAdd,
-        url: '/calc'
-    }).done(function(response){
-        console.log('Success!');
-        getHist();
-    })
+    if ($('#operator').text() == ''){
+    $('#operator').append(' ' + $(this).text() + ' ');
+    }
 }
 
 function getHist(){
@@ -102,10 +99,27 @@ function clearHist(){
 
 function inputVal () {
     let a = $(this).text();
-    visual(a);
-    
+    if ($('#operator').text() == ''){
+        $('#xVal').append(a);
+    } else {
+        $('#yVal').append(a);
+    }
+    // $('#currentCalc').append(a);
+    console.log($('#operator').length);
 }
 
-function visual (a) {
-    $('#currentCalc').append(a);
+function sendData(){
+    let x = $('#xVal').text();
+    let y = $('#yVal').text();
+    let math = $('#operator').text();
+    let valsAdd = {xValue: x, yValue: y, math: math};
+    console.log(valsAdd);
+    $.ajax({
+        type: 'post',
+        data: valsAdd,
+        url: '/calc'
+    }).done(function(response){
+        console.log('Success!');
+        getHist();
+    })
 }
